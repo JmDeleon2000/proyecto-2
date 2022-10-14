@@ -156,3 +156,4 @@ cython_debug/
 /data/first
 *.tiff
 *.tif
+*zip
