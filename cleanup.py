@@ -35,7 +35,6 @@ for i in zip.namelist():
         img = np.array(img)
         img[img > 240] = 0
         img = Image.fromarray(img)
-        img = img.crop((0, 0, img.size[0], img.size[1]/2))
         img = img.resize(dims, Image.Resampling.BICUBIC, box = img.getbbox(), reducing_gap=1.5)
         img.save(newfilename, quality=90, optimize=True)
 
