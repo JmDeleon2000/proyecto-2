@@ -157,3 +157,6 @@ cython_debug/
 *.tiff
 *.tif
 *zip
+
+darknet/
+convNN_save_at_25.h5
