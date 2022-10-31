@@ -160,3 +160,5 @@ cython_debug/
 
 darknet/
 convNN_save_at_25.h5
+convNNv2_save_at_25.h5
+
