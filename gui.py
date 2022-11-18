@@ -2,6 +2,16 @@
 import PySimpleGUI as sg
 import os.path
 from PIL import Image
+import pandas as pd
+from tensorflow import keras
+import numpy as np
+import matplotlib.pyplot as plt
+from PIL import Image
+from sklearn import metrics
+
+
+modelv1 = keras.models.load_model('convNN_save_at_25.h5') 
+modelv2 = keras.models.load_model('convNN_v2_25.h5')
 
 
 # im1 = Image.open("./example.jpg")
@@ -13,8 +23,12 @@ color_secundario= '#fb8300'
 button1text= "Classify Using model 1"
 button2text= "Classify Using model 2"
 globalfile=""
+globalresult=""
 
 # demoImage= Image.open(globalfile)
+
+
+
 
 layout1 = [
 	[
@@ -58,12 +72,30 @@ layout = [
 
 mywindow = sg.Window(title="Classifier", layout=layout, margins=(100,50) , background_color=color_base)
 
+
+def makeprediction1(filename):
+	##prediction = modelv1.predict(Image.open(filename))
+	print(prediction)
+	prediction = modelv1.predict(Image.open(filename))
+	globalresult=prediction
+
+
+def makeprediction2(filename):
+	##prediction = modelv1.predict(Image.open(filename))
+	print(prediction)
+	prediction = modelv2.predict(Image.open(filename))
+	globalresult="prediction"
+
+
+
+
 while True:
 	event, values = mywindow.read()
 
 	if event == button1text:
 		print("Boton 1 presionado")
 		print("Enviare este file al modelo 1 : " +globalfile)
+		makeprediction1(globalfile)
 		mywindow["-OUTPUT-"].update("resultado del modelo1") 
 	if event == button2text :
 		print("Boton 2 presionado")
