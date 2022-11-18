@@ -14,6 +14,8 @@ button1text= "Classify Using model 1"
 button2text= "Classify Using model 2"
 globalfile=""
 
+# demoImage= Image.open(globalfile)
+
 layout1 = [
 	[
 	sg.Text("Seleccionar Imagen"),
@@ -74,8 +76,10 @@ while True:
 		file= values["-FILE-"]
 		print(file)
 		globalfile=file
+		demoImage= Image.open(globalfile)
+		demoImage.save("demo.png")
 		#mywindow["filename"].update(file)
-		mywindow["-IMAGE-"].update(filename=file)
+		mywindow["-IMAGE-"].update(filename="demo.png")
 
 
 
