@@ -74,18 +74,19 @@ mywindow = sg.Window(title="Classifier", layout=layout, margins=(100,50) , backg
 
 
 def makeprediction1(filename):
-	##prediction = modelv1.predict(Image.open(filename))
-	print(prediction)
 	prediction = modelv1.predict(Image.open(filename))
+	#print(prediction)
+	#prediction = modelv1.predict(Image.open(filename))
 	globalresult=prediction
+	
 
 
 def makeprediction2(filename):
-	##prediction = modelv1.predict(Image.open(filename))
-	print(prediction)
+	#prediction = modelv1.predict(Image.open(filename))
+	#print(prediction)
 	prediction = modelv2.predict(Image.open(filename))
 	globalresult="prediction"
-
+	
 
 
 
@@ -96,11 +97,12 @@ while True:
 		print("Boton 1 presionado")
 		print("Enviare este file al modelo 1 : " +globalfile)
 		makeprediction1(globalfile)
-		mywindow["-OUTPUT-"].update("resultado del modelo1") 
+		mywindow["-OUTPUT-"].update(globalresult) 
 	if event == button2text :
 		print("Boton 2 presionado")
 		print("Enviare este file al modelo 2 : " +globalfile)
-		mywindow["-OUTPUT-"].update("resultado del modelo2") 
+		makeprediction2(globalfile)
+		mywindow["-OUTPUT-"].update(globalresult) 
 
 
 	if event == "-FILE-" :
